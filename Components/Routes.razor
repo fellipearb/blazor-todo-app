@@ -1,0 +1,10 @@
+﻿<Router AppAssembly="typeof(Program).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <h1>404 - Página não encontrada</h1>
+        <p>A página que você está tentando acessar não existe.</p>
+    </NotFound>
+</Router>

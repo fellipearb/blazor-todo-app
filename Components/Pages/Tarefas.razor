@@ -1,0 +1,60 @@
+@page "/tarefas"
+@rendermode InteractiveServer
+
+@inject TodoBlazor.Services.TodoService TodoService
+@inject ILogger<Tarefas> Logger
+
+<PageTitle>Todo List</PageTitle>
+
+<h1>Todo List</h1>
+
+<form class="d-flex flex-column w-25" @onsubmit="AddTodoItem">
+    <label class="form-label">Add a new todo item:</label>
+    <input class="form-control" @bind="newTodoItem" placeholder="Item name" />
+    <button class="btn btn-primary mt-3" type="submit">Click me</button>
+</form>
+
+<ul class="p-0 mt-5">
+    <h2>Items: <i class="bi bi-0-circle"></i>ss</h2>
+    @if (TodoService?.GetAllItems() != null)
+    {
+        foreach (var tarefa in TodoService.GetAllItems())
+        {
+            <li class="d-flex mb-3 gap-2 align-items-center">
+                <p class="mb-0">
+                    @if (tarefa.Concluida)
+                    {
+                        <s>@tarefa.Titulo</s>
+                    }
+                    else
+                    {
+                        @tarefa.Titulo
+                    }
+                </p>
+
+                <button class="btn btn-success" @onclick="() => MarcarConcluida(tarefa.Id)">Concluir</button>
+                <button class="btn btn-danger" @onclick="() => Remover(tarefa.Id)">Remover</button>
+            </li>
+        }
+    }
+</ul>
+
+@code {
+    private string newTodoItem = "";
+
+    private void AddTodoItem()
+    {
+        TodoService.AddNewItem(newTodoItem);
+        newTodoItem = "";
+    }
+
+    void MarcarConcluida(Guid id)
+    {
+        TodoService.SetAsDone(id);
+    }
+
+    void Remover(Guid id)
+    {
+        TodoService.RemoveItem(id);
+    }
+}

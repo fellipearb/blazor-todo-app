@@ -1,0 +1,34 @@
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# IDE-specific files
+.vscode/
+.idea/
+*.vs/
+
+# Dependency directories
+node_modules/
+
+# Tailwind CSS output (if using Tailwind)
+wwwroot/css/tailwind.css
+
+# Generated files
+wwwroot/_framework/
+wwwroot/css/app.bundle.css
+wwwroot/css/app.bundle.css.map
+wwwroot/css/*.min.css
+wwwroot/js/*.min.js
+wwwroot/_content/
+
+# Configuration files
+appsettings.Development.json
